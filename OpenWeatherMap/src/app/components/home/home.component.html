@@ -1,0 +1,119 @@
+<section class="mx-10">
+    <header class="bg-inherit shadow-2xl space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6 rounded-lg">
+        <div class="flex flex-row">
+            <div class="basis-1/2">
+                <h2 class="font-semibold text-slate-900">City</h2>
+            </div>
+            <div class="basis-1/2">
+                <h2 class="font-semibold text-slate-900">Country</h2>
+            </div>
+        </div>
+        <form (submit)="submitLocation(city, country)">
+            <div class="grid grid-flow-col auto-cols-auto">
+                <div class="mr-2">
+                    <svg width="20" height="20" fill="currentColor" class="absolute left-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-blue-500" aria-hidden="true">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
+                    </svg>
+                    <input #city class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter projects" placeholder="Example: Merida">
+                </div>
+                <div class="ml-2">
+                    <svg width="20" height="20" fill="currentColor" class="absolute left-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-blue-500" aria-hidden="true">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
+                    </svg>
+                    <input #country class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter projects" placeholder="Example: Mexico">
+                </div>
+            </div>
+            <div class="mt-5 flex justify-center">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded w-64">
+                    Send
+                </button>
+            </div>
+        </form>
+    </header>
+</section>
+<div *ngIf="toastr" class="flex justify-end mt-5 mx-10">
+    <app-toastr></app-toastr>
+</div>
+<section class="mx-10">
+    <header *ngIf="weather" class="bg-inherit shadow-2xl space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6 rounded-lg">
+        <div class="card-title text-center mt-5">
+            <h1 class="text-2xl font-bold">This is weather in {{weather.name}}</h1>
+        </div>
+        <div class="card-body">
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
+                <div>
+                    <p>
+                        <strong>
+                            Temperatura: 
+                        </strong>
+                        <span>
+                            {{weather.main.temp}} °C
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Temperature min: 
+                        </strong>
+                        <span>
+                            {{weather.main.temp_min}} °C
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Temperature max: 
+                        </strong>
+                        <span>
+                            {{weather.main.temp_max}} °C
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <strong>
+                            Humidity: 
+                        </strong>
+                        <span>
+                            {{weather.main.humidity}} %
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Pressure: 
+                        </strong>
+                        <span>
+                            {{weather.main.pressure}}
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <strong>
+                            Weather: 
+                        </strong>
+                        <span>
+                            {{weather.weather[0].main}}
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Description: 
+                        </strong>
+                        <span>
+                            {{weather.weather[0].description}}
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <strong>
+                            Speed: 
+                        </strong>
+                        <span>
+                            {{weather.wind.speed}}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+</section>
